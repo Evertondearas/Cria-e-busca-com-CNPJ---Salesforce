@@ -1,29 +1,58 @@
 <template>
-    <lightning-card title="Busca de Empresa por CNPJ" icon-name="standard:account">
-        <div class="slds-m-around_medium">
-            <lightning-input label="CNPJ" onchange={handleCnpjChange} value={CNPJInput}></lightning-input>
-            <lightning-button label="Buscar" onclick={handleBuscarClick} class="slds-m-top_small" variant="brand"> </lightning-button>
+    <lightning-card title="Busca de Empresa por CNPJ" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+            
+            <template lwc:if={mostrarFormulario}>
+                <lightning-input
+                    label={cnpj}
+                    onchange={handleCnpjChange}
+                    value={CNPJInput}
+                    type="text"
+                    placeholder="Digite o CNPJ">
+                </lightning-input>
 
-            <template if:true={empresas}>
-                <div class="slds-box slds-m-top_medium slds-theme_alt-inverse">
-                    <p><strong>Fantasia:</strong> {empresas.fantasia}</p>
-                    <p><strong>CNPJ:</strong> {empresas.cnpj}</p>
-                    <p><strong>Situação:</strong> {empresas.situacao}</p>
-                    <p><strong>Abertura:</strong> {empresas.abertura}</p>
-                    <p><strong>Tipo:</strong> {empresas.tipo}</p>
-                    <p><strong>Natureza Jurídica:</strong> {empresas.natureza_juridica}</p>
-                    <p><strong>Endereço:</strong> {empresas.numero}, {empresas.bairro}, {empresas.municipio} - {empresas.uf}</p>
-                    <p><strong>Email:</strong> {empresas.email}</p>
-                    <p><strong>Telefone:</strong> {empresas.telefone}</p>
-                </div>
-            </template>
-            <template if:true={error}>
-                <div class="slds-m-top_medium">
-                    <p style="color: red; font-weight: bold;">Erro:</p>
-                        <!-- Acessa a mensagem do erro que vem do Apex (System.AuraHandledException) -->
-                    <p style="color: red;">{error}</p> 
-                </div>
-            </template>
-        </div>
-    </lightning-card>
+                <div class="slds-m-top_medium">
+                    <lightning-button
+                        label="Buscar"
+                        onclick={handleBuscarClick}
+                        variant="brand">
+                    </lightning-button>
+                </div>
+            </template>
+            
+            <template lwc:if={empresa}>
+                <div class="slds-box slds-m-top_medium slds-theme_info slds-text-color_inverse" style="background-color: #0070d2; color: white; padding: 1rem;">
+                    <p><strong>Fantasia:</strong> {empresa.fantasia}</p>
+                    <p><strong>CNPJ:</strong> {empresa.cnpj}</p>
+                    <p><strong>Situação:</strong> {empresa.situacao}</p>
+                    <p><strong>Abertura:</strong> {empresa.abertura}</p>
+                    <p><strong>Tipo:</strong> {empresa.tipo}</p>
+                    <p><strong>Natureza Jurídica:</strong> {empresa.natureza_juridica}</p>
+                    <p><strong>Endereço:</strong> {empresa.numero}, {empresa.bairro}, {empresa.municipio} - {empresa.uf}</p>
+                    <p><strong>Email:</strong> {empresa.email}</p>
+                    <p><strong>Telefone:</strong> {empresa.telefone}</p>
+                    <p><strong>Status:</strong> {empresa.status}</p>
+                </div>
+
+                <lightning-layout class="slds-m-top_medium">
+                    <lightning-layout-item flexibility="auto"></lightning-layout-item>
+                    <lightning-layout-item>
+                        <lightning-button
+                            label="Limpar"
+                            onclick={limparPesquisa}
+                            variant="neutral">
+                        </lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+
+            <template lwc:if={error}>
+                <div class="slds-m-top_medium slds-notify slds-notify_alert slds-theme_error" role="alert">
+                    <span class="slds-assistive-text">Erro</span>
+                    <lightning-icon icon-name="utility:error" alternative-text="Erro" size="small" class="slds-m-right_x-small"></lightning-icon>
+                    <h2>{error}</h2>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
 </template>

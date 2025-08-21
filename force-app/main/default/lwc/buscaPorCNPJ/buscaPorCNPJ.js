@@ -1,35 +1,46 @@
 import { LightningElement } from 'lwc';
-import getEmpresasList from '@salesforce/apex/calloutAPIReceita.usoLWC';
+import getEmpresa from '@salesforce/apex/calloutAPIReceita.usoLWC';
 
-export default class BuscaPorCNPJ extends LightningElement {
-    
-    CNPJInput;
-    empresas;
-    error;
+export default class BuscaPorCnpj extends LightningElement {
+    cnpj = '';
+    empresa = null;
+    error = null;
 
-    handleCnpjChange(event){
-        this.CNPJInput = event.target.value;
+    handleCnpjChange(event) {
+        this.cnpj = event.target.value;
+        this.error = null;
     }
 
-    async handleBuscarClick(){
-        if(this.CNPJInput){
-            await this.buscaEmpresa(this.CNPJInput);
-        }else {
-            this.error = { message: 'Por favor, digite um CNPJ.' };
-            this.empresas = undefined;
+    async handleBuscarClick() {
+        if (!this.cnpj || this.cnpj.trim() === '') {
+            this.error = 'Por favor, digite um CNPJ válido.';
+            this.empresa = null;
+            return;
         }
-    } 
-    
-    async buscaEmpresa(CNPJ){
+
         try {
-             this.empresas = await getEmpresasList({CNPJ: CNPJ});
-             this.error = undefined;
-             console.log('Empresa encontrada:', this.empresas);
-            }    
-        catch(error) {
-            this.empresas = undefined;
-            this.error = error;
-            console.log('Erro na busca: ', error.message);
+            const resultado = await getEmpresa({ CNPJ: this.cnpj });
+            this.empresa = resultado;
+            this.error = null;
+        } catch (error) {
+            this.empresa = null;
+            if (error && error.body && error.body.message) {
+                this.error = error.body.message;
+            } else if (error && error.message) {
+                this.error = error.message;
+            } else {
+                this.error = 'Erro desconhecido ao buscar empresa.';
+            }
         }
+    }
+
+    limparPesquisa() {
+        this.cnpj = '';
+        this.empresa = null;
+        this.error = null;
+    }
+
+    get mostrarFormulario() {
+        return !this.empresa;
     }
 }
