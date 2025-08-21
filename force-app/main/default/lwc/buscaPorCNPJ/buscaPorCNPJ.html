@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Busca de Empresa por CNPJ" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+            <lightning-input label="CNPJ" onchange={handleCnpjChange} value={CNPJInput}></lightning-input>
+            <lightning-button label="Buscar" onclick={handleBuscarClick} class="slds-m-top_small" variant="brand"> </lightning-button>
+
+            <template if:true={empresas}>
+                <div class="slds-box slds-m-top_medium slds-theme_alt-inverse">
+                    <p><strong>Fantasia:</strong> {empresas.fantasia}</p>
+                    <p><strong>CNPJ:</strong> {empresas.cnpj}</p>
+                    <p><strong>Situação:</strong> {empresas.situacao}</p>
+                    <p><strong>Abertura:</strong> {empresas.abertura}</p>
+                    <p><strong>Tipo:</strong> {empresas.tipo}</p>
+                    <p><strong>Natureza Jurídica:</strong> {empresas.natureza_juridica}</p>
+                    <p><strong>Endereço:</strong> {empresas.numero}, {empresas.bairro}, {empresas.municipio} - {empresas.uf}</p>
+                    <p><strong>Email:</strong> {empresas.email}</p>
+                    <p><strong>Telefone:</strong> {empresas.telefone}</p>
+                </div>
+            </template>
+            <template if:true={error}>
+                <div class="slds-m-top_medium">
+                    <p style="color: red; font-weight: bold;">Erro:</p>
+                        <!-- Acessa a mensagem do erro que vem do Apex (System.AuraHandledException) -->
+                    <p style="color: red;">{error}</p> 
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
