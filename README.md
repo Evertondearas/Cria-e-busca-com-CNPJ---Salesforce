@@ -60,8 +60,8 @@ sf apex run test --class-names testCalloutAPIReceita
 A classe testCalloutAPIReceita simula uma resposta de sucesso (HTTP 200) e testa a validação de erro do CNPJ, garantindo alta cobertura de código.
 
 <img width="1919" height="868" alt="image" src="https://github.com/user-attachments/assets/73a8ff15-99ca-4199-b44e-5091746a0fb9" />
-<img width="618" height="712" alt="image" src="https://github.com/user-attachments/assets/73cd42a9-fcef-47a6-ad92-34de6ae3b185" />
-<img width="611" height="345" alt="image" src="https://github.com/user-attachments/assets/8a89a0b9-77b6-464a-82ce-8835fe683061" />
 
+<img width="1914" height="826" alt="image" src="https://github.com/user-attachments/assets/8415cb54-3a08-49be-9f59-87fe98cdbeb3" />
 
+<img width="1900" height="858" alt="image" src="https://github.com/user-attachments/assets/e7944c45-ecc9-4f4d-8640-593f4e195911" />
 
