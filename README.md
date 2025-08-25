@@ -1,4 +1,4 @@
-📄 Busca e Criação de Conta por CNPJ (Salesforce Flow + Apex Callout)
+📄 Busca e Criação de Conta por CNPJ (LWC + Salesforce Flow + Apex Callout)
 Este projeto demonstra a criação de uma solução de integração de dados no Salesforce utilizando o Flow em conjunto com uma Classe Apex Invocável para realizar um callout (chamada externa) à API pública da ReceitaWS e buscar informações cadastrais de empresas brasileiras pelo CNPJ.
 
 ✨ Funcionalidades Principais
@@ -20,7 +20,6 @@ Apex Class	funcoesApoioCalloutApiReceita	Contém funções utilitárias: limpeza
 Apex Class	Empresa	Classe Wrapper (Contêiner) para desserializar a resposta JSON da API da ReceitaWS em um objeto Apex fácil de usar.
 Apex Class	testCalloutAPIReceita	Classe de teste para garantir a cobertura de código dos callouts HTTP (simulando a resposta da API com um Mock).
 
-Exportar para as Planilhas
 🚀 Configuração e Implantação
 Para utilizar este projeto em sua própria Organização do Salesforce, siga os passos abaixo:
 
@@ -48,7 +47,7 @@ sf project deploy start --metadata-dir force-app --test-level RunSpecifiedTests 
 3. Execução do Flow
 No Salesforce, vá para Setup (Configuração) > Process Automation (Automação de Processos) > Flows.
 
-Encontre e clique no Flow Cria conta por CNPJ (V17).
+Encontre e clique no Flow Cria conta por CNPJ.
 
 Você pode ativá-lo e adicioná-lo a uma página do Lightning (como a Página Inicial ou a página de Registro de Conta) usando um componente Flow.
 
@@ -61,3 +60,8 @@ sf apex run test --class-names testCalloutAPIReceita
 A classe testCalloutAPIReceita simula uma resposta de sucesso (HTTP 200) e testa a validação de erro do CNPJ, garantindo alta cobertura de código.
 
 <img width="1919" height="868" alt="image" src="https://github.com/user-attachments/assets/73a8ff15-99ca-4199-b44e-5091746a0fb9" />
+<img width="618" height="712" alt="image" src="https://github.com/user-attachments/assets/73cd42a9-fcef-47a6-ad92-34de6ae3b185" />
+<img width="611" height="345" alt="image" src="https://github.com/user-attachments/assets/8a89a0b9-77b6-464a-82ce-8835fe683061" />
+
+
+
