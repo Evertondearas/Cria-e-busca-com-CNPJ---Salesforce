@@ -1,3 +1,10 @@
+
+<img width="1919" height="868" alt="image" src="https://github.com/user-attachments/assets/73a8ff15-99ca-4199-b44e-5091746a0fb9" />
+
+<img width="1914" height="826" alt="image" src="https://github.com/user-attachments/assets/8415cb54-3a08-49be-9f59-87fe98cdbeb3" />
+
+<img width="1900" height="858" alt="image" src="https://github.com/user-attachments/assets/e7944c45-ecc9-4f4d-8640-593f4e195911" />
+
 📄 Busca e Criação de Conta por CNPJ (LWC + Salesforce Flow + Apex Callout)
 Este projeto demonstra a criação de uma solução de integração de dados no Salesforce utilizando o Flow em conjunto com uma Classe Apex Invocável para realizar um callout (chamada externa) à API pública da ReceitaWS e buscar informações cadastrais de empresas brasileiras pelo CNPJ.
 
@@ -58,10 +65,3 @@ Executar os Testes:
 
 sf apex run test --class-names testCalloutAPIReceita
 A classe testCalloutAPIReceita simula uma resposta de sucesso (HTTP 200) e testa a validação de erro do CNPJ, garantindo alta cobertura de código.
-
-<img width="1919" height="868" alt="image" src="https://github.com/user-attachments/assets/73a8ff15-99ca-4199-b44e-5091746a0fb9" />
-
-<img width="1914" height="826" alt="image" src="https://github.com/user-attachments/assets/8415cb54-3a08-49be-9f59-87fe98cdbeb3" />
-
-<img width="1900" height="858" alt="image" src="https://github.com/user-attachments/assets/e7944c45-ecc9-4f4d-8640-593f4e195911" />
-
