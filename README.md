@@ -6,8 +6,7 @@
 <img width="1900" height="858" alt="image" src="https://github.com/user-attachments/assets/e7944c45-ecc9-4f4d-8640-593f4e195911" />
 
 
-
-📄 Busca e Criação de Conta por CNPJ (LWC + Salesforce Flow + Apex Callout)
+📄 Busca e Criação de Conta por CNPJ (LWC + Salesforce Flow + Apex Callout+ Trigger)
 Este projeto demonstra a criação de uma solução de integração de dados no Salesforce utilizando o Flow em conjunto com uma Classe Apex Invocável para realizar um callout (chamada externa) à API pública da ReceitaWS e buscar informações cadastrais de empresas brasileiras pelo CNPJ.
 
 ✨ Funcionalidades Principais
@@ -19,7 +18,9 @@ Tratamento de Erros Eficaz: Captura e trata exceções de forma clara, apresenta
 
 Criação de Conta: Após a busca bem-sucedida, o Flow permite a criação de um registro de Account (Conta) preenchido automaticamente com os dados da Receita Federal.
 
-Prevenção de Duplicidade: Verifica a existência de uma conta com o mesmo CNPJ antes de criar uma nova.
+Prevenção de Duplicidade do fluxo: Verifica a existência de uma conta com o mesmo CNPJ antes de criar uma nova.
+
+Trigger de prevenção de duplicidade para criação e contas manualmente: Foi implementada uma trigger no objeto Account para evitar a criação de registros duplicados com o mesmo CNPJ.
 
 💻 Componentes e Metadados
 Tipo de Metadado	Nome do Arquivo / API Name	Função
@@ -28,6 +29,7 @@ Apex Class	calloutAPIReceita	Contém o método @invocableMethod (usoFlow) que é
 Apex Class	funcoesApoioCalloutApiReceita	Contém funções utilitárias: limpeza/validação de CNPJ e classes de exceção customizadas (ErrorException e CalloutAPIException).
 Apex Class	Empresa	Classe Wrapper (Contêiner) para desserializar a resposta JSON da API da ReceitaWS em um objeto Apex fácil de usar.
 Apex Class	testCalloutAPIReceita	Classe de teste para garantir a cobertura de código dos callouts HTTP (simulando a resposta da API com um Mock).
+Trigger barraContasDuplicadas que garante que na criação manual das contas não sejam criadas contas duplicadas.
 
 🚀 Configuração e Implantação
 Para utilizar este projeto em sua própria Organização do Salesforce, siga os passos abaixo:
